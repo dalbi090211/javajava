@@ -8,30 +8,20 @@ public class Selection {
     public static Boolean roop_count = false;
     public static Scanner sc = new Scanner(System.in); 
 
-    public static void main(String args[]){
-
-        Boolean roop_count = false;
-        Scanner sc = new Scanner(System.in);
-        /*
-         * 1.국어와 영어 점수를 입력 받아 두 점수의 합이 120점 이상이면 합격을, 
-         * 그렇지 않으면 불합격을 출력하는 프로그램을 작성하시오.
-         * 입력을 어떻게 받을지 몰라서 몰라요
-         */
-
+    public static void one() {
         int Score_math = 0;
         int Score_english = 0;
-
         do{
-            roop_count = false;
-            System.out.println("수학 점수를 입력해주세요 : ");
-            Score_math = get_int();
-        if(roop_count == true){
-            System.out.println("잘못된 입력입니다. 1~100사이의 정수를 다시 입력해주세요.");
-        }
-        else if(Score_math > 100 || Score_math < 0){
-            System.out.println("잘못된 입력값입니다. 1~100사이의 값을 다시 입력해주세요.");
-            roop_count = true;
-        }
+                roop_count = false;
+                System.out.println("수학 점수를 입력해주세요 : ");
+                Score_math = get_int();
+                if(roop_count == true){
+                    System.out.println("잘못된 입력입니다. 1~100사이의 정수를 다시 입력해주세요.");
+            }
+                else if(Score_math > 100 || Score_math < 0){
+                    System.out.println("잘못된 입력값입니다. 1~100사이의 값을 다시 입력해주세요.");
+                    roop_count = true;
+            }
         }
         while(roop_count == false);
 
@@ -43,42 +33,109 @@ public class Selection {
         else{
             System.out.println("불합격");
         }
-        
-        /*
-         * 3. 유권자 수와 투표자 수를 입력 받아 투표율이 50% 이상인 경우 
-         * “유효 투표입니다”를 출력하는 프로그램을 작성하시오.
-         */
-        
+    }
 
-        /* 5. 한 사람당 8000원인 영화관에서 10명 이상일 경우 10%, 20명 이상일 경우 20%를 할인해 주고 있다. 
-         * 사람 수를 입력 받아 지불해야 하는 총 비용을 출력하는 프로그램을 작성하시오.
-        { 실행 결과 }
-        사람 수 : 00명
-        총 비용(00%할인 적용) : 0000000원
-         */
+    public static void three() {
+        int voter_max = 0;
+        int voter_par = 0;
+
+        System.out.print("유권자 수를 입력해주세요 : ");
+        voter_max = sc.nextInt();
+        System.out.print("투표자 수를 입력해주세요 : ");
+        voter_par = sc.nextInt();
+        if(voter_par / voter_max > 50){
+            System.out.print("유효 투표입니다");
+        }
+        else{
+            System.out.print("무효 투표입니다");
+        }
+    }
+
+    public static void five() {
+        int movie_watcher = 0;
+        System.out.print("사람 수 : ");
+        movie_watcher = sc.nextInt();
+        if(movie_watcher > 20){
+            System.out.println("총 비용(20%할인 적용 : " + movie_watcher*6400 + "원");
+        }
+        else if (movie_watcher > 10) {
+            System.out.println("총 비용(10%할인 적용 : " + movie_watcher*7200 + "원");
+        }
+        else {
+            System.out.println("총 비용(0%할인 적용 : " + movie_watcher*8000 + "원");
+        }
+    }
+
+    public static void seven() {
+        int person_age = 0;
+        System.out.print("나이가 어떻게 되십니까? ");
+        person_age = sc.nextInt();
+        if(person_age > 19){
+            System.out.println("성인입니다");
+        }
+        else if (person_age == 19){
+            System.out.println("19세입니다");
+        }
+        else {
+            System.out.println("미성년자입니다");
+        }
+    }
+
+    public static void nine() {
+        int num1 = 0;
+        int num2 = 0;
+        System.out.print("입력 값 : ");
+        num1 = sc.nextInt();
+        num2 = sc.nextInt();
+        if(num1 >= num2){
+            System.out.println("출력 값 : " + num1 + num2);
+        }
+        else if (num2 > num1){
+            System.out.println("출력 값 : " + num2 + num1);
+        }
+    }
 
 
-        /* 7. 나이를 입력 받아 입력된 나이가 19세 미만이면 “미성년자입니다”, 19세이면 “19세입니다”를, 
-        19세보다 많으면 “성인입니다”를 출력하는 프로그램을 작성하시오.
-        */
-
-
-        /* 9. 2개의 값을 입력 받아 값을 큰 순서대로 출력하는 프로그램을 작성하시오.
-        { 실행 결과 }
-        입력 값 : 14  23
-        출력 값 : 23  14
-        */
-
-        /*11. 상품의 개수와 단가를 입력 받아 총 금액을 계산하여 출력하시오. 
-        단, 상품의 개수가 100-199 사이이면 8%, 200-299 사이이면 15%, 300개 이상이면 20%의 할인 금액을 적용한다. 
-        100개 미만이면 할인 금액을 적용하지 않는다.
-         */
-
-
+    public static void eleven() {
+        int quantity = 0;
+        float value = 0;
+        System.out.print("상품의 개수 : ");
+        quantity = sc.nextInt();
+        System.out.print("상품의 단가 : ");
+        value = sc.nextFloat();
+        if(quantity >= 300){
+            System.out.println("총 금액 : " + value*quantity*100/80);
+        }else if (quantity >= 200 ){
+            System.out.println("총 금액 : " + value*quantity*100/85);
+        }else if (quantity >= 100){
+            System.out.println("총 금액 : " + value*quantity*100/92);
+        }else{
+            System.out.println("총 금액 : " + value*quantity);
+        }
+    }
+    public static void main(String args[]){
+        int go_num;
+        System.out.print("실행할 코드의 번호를 입력해주세요 : ");
+        go_num = sc.nextInt();
+        switch(go_num / 2){
+            case 0 : one(); 
+                break;
+            case 1 : three();
+            break;
+            case 2 : five();
+            break;
+            case 3 : seven();
+            break;
+            case 4 : nine();
+            break;
+            case 5 : eleven();
+            break;
+            default : System.out.println("정상종료되었습니다.");
+        }
     }
 
     public static int get_int(){
-        int input_value;
+        int input_value = 0;
         try{
             input_value = sc.nextInt();
         }
@@ -86,11 +143,7 @@ public class Selection {
             sc.next();
             roop_count = true;
         }
-        finally{
-            if(e == null){
-                return input_value;
-            }
-        }
+        return input_value;
     }
 
 }
