@@ -128,6 +128,7 @@ public class Selection {
             System.out.println("총 금액 : " + value*quantity);
         }
     }
+    
     public static void main(String args[]){
         int go_num;
         System.out.print("실행할 코드의 번호를 입력해주세요 : ");
