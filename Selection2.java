@@ -58,9 +58,9 @@ public class Selection2 {
 
     public static void three() {
         int grade = 0;
-        String gender;
+        String gender = "";
         System.out.print("성 : ");  
-        gender = sc.next();     //문자열이다보니 성별이 제대로 들어갔는지 체크해야될듯
+        gender = sc.next();     //문자열이다보니 성별이 남성, 남, 남자 이런 경우로 들어간걸 하나로 바꾸는 코드 짜야함
         System.out.print("토익 성적 : ");
         grade = sc.nextInt(); 
         if((gender == "남성" && grade >= 800) || (gender == "여성"  && grade >= 700)){
@@ -72,7 +72,14 @@ public class Selection2 {
     }
 
     public static void five() {
+        int price = 0;
+        int purchase_date = 0;
 
+        System.out.print("가격 : ");  
+        price = sc.nextInt(); 
+        System.out.print("구입 시간 : ");   //substring으로 : 기준으로 자르고 둘 다 isnum으로 숫자인지 확인. 이후 12보다 크거나 0보다 작은지 확인해서 시간인지 검사.하나라도 아니면 루프
+        purchase_date = sc.nextInt();
+        
     }
 
     public static void seven() {
