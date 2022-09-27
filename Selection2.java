@@ -27,6 +27,7 @@ public class Selection2 {
         }
         catch(InputMismatchException e){    //문자열, 객체와 같은 다른 타입의 값 입력 시의 에러를 캐치함
             sc.next();  //입력버퍼를 비움
+            System.out.print("\033[H\033[2J");
             System.out.println("정수를 입력해주세요.");
             roop_count = true;
         }
@@ -40,34 +41,50 @@ public class Selection2 {
         catch(InputMismatchException e){
             sc.next();  
             roop_count = true;
+            System.out.print("\033[H\033[2J");
             System.out.println("실수를 입력해주세요.");
         }
         return input_value;
     }
     //기능
-    public static void one() {  //나이와 성적을 입력받아 조건에 맞다면 추천, 다르다면 비추천하는 함수
+    /**
+     * 
+     */
+    public static void one() throws trialException {  //나이와 성적을 입력받아 조건에 맞다면 추천, 다르다면 비추천하는 함수
 
         int age = 0; 
         float grade = 0;
+        int patience = 0;
 
         do{
+            if(patience == 7){
+                throw new trialException("too many trial");
+            }
             roop_count = false;
             System.out.print("나이 : ");
             age = get_int();
             if(age < 0 ){
+                System.out.print("\033[H\033[2J");
                 System.out.println("0보다 큰 나이를 입력해주세요.");
                 roop_count = true;
             }
+            patience++;
         }
         while(roop_count == true);
+
         do{
+            if(patience == 7){
+                throw new trialException("too many trial");
+            }
             roop_count = false;
             System.out.print("성적 : ");
             grade = get_float();
             if(grade < 0 || grade > 5){
-                System.out.println("0~100사이의 성적을 입력해주세요.");
+                System.out.print("\033[H\033[2J");
+                System.out.println("0~5사이의 성적을 입력해주세요.");
                 roop_count = true;
             }
+            patience++;
         }
         while(roop_count == true);
 
@@ -153,4 +170,3 @@ public class Selection2 {
 
 }
 
-https://www.nextree.co.kr/p3239/
