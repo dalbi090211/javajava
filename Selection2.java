@@ -194,19 +194,18 @@ public class Selection2 {
         }
         while(roop_count == true); 
         patience = 0;
-        patience = 0;
         do{
             fury();
-            System.out.print("성 : ");
-            ope = sc.next().charAt(1);
-            if(ope != '+' || ope != '-'){
-                sc.next();
+            System.out.print("연산자 : ");
+            ope = sc.next().charAt(0);
+            if(ope != '+' && ope != '-'){
                 System.out.print("\033[H\033[2J");
                 System.out.println("다시 연산자(+,-)를 입력해주세요.");
                 roop_count = true;
             }
         }   
         while(roop_count == true); 
+        patience = 0;
         do{
             fury();
             roop_count = false;
@@ -214,7 +213,7 @@ public class Selection2 {
             num2= get_int();  //가격 자체는 정수이므로 정수로 받음.
         }
         while(roop_count == true); 
-        
+
         if(ope == '+'){
             temp = num1 + num2;
         }
