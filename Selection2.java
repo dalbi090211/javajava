@@ -186,13 +186,19 @@ public class Selection2 {
         Character ope;
         float temp = 0;
 
-        num1 = sc.nextFloat();
-        num2 = sc.nextFloat();
-
+        do{
+            fury();
+            roop_count = false;
+            System.out.print("숫자1 : ");
+            num1 = get_int();  //가격 자체는 정수이므로 정수로 받음.
+        }
+        while(roop_count == true); 
+        patience = 0;
+        patience = 0;
         do{
             fury();
             System.out.print("성 : ");
-            ope = sc.next().charAt(0);
+            ope = sc.next().charAt(1);
             if(ope != '+' || ope != '-'){
                 sc.next();
                 System.out.print("\033[H\033[2J");
@@ -201,7 +207,14 @@ public class Selection2 {
             }
         }   
         while(roop_count == true); 
-
+        do{
+            fury();
+            roop_count = false;
+            System.out.print("숫자2 : ");
+            num2= get_int();  //가격 자체는 정수이므로 정수로 받음.
+        }
+        while(roop_count == true); 
+        
         if(ope == '+'){
             temp = num1 + num2;
         }
