@@ -7,7 +7,7 @@ public class Selection2 {
     public static Boolean roop_count = false;       //사용자의 입력이 잘못됬을 경우 true로 바꿔 다시 입력받음
     public static Scanner sc = new Scanner(System.in);  //입력을 받기 위한 변수
     //전역함수
-    public static void fury() {
+    public static void fury() { //많은 시도시 프로그램을 종료시키는 함수
         patience++;
         if(patience > 2){
             System.out.println("앞으로 " + (6 - patience) + "번 실패하면 종료합니다.");
@@ -51,18 +51,18 @@ public class Selection2 {
         float grade = 0;
 
         do{
-            fury();
+            fury(); //사용자가 많이 시도하면 종료할수 있도록 루프마다 호출함
             roop_count = false;
             System.out.print("나이 : ");
             age = get_int();
-            if(age < 0 ){
+            if(age < 0 ){   //입력받을 변수에 알맞지 않는 값이 들어오면 다시 입력받음
                 System.out.print("\033[H\033[2J");
                 System.out.println("0보다 큰 나이를 입력해주세요.");
                 roop_count = true;
             }
         }
         while(roop_count == true);
-        patience = 0;
+        patience = 0;   //루프가 끝났으므로 초기화시킴
         do{
             fury();
             roop_count = false;
