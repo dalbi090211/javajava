@@ -1,20 +1,6 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
-/* 
-3.성별이 여자이면서 토익 성적이 700점 이상인 경우 또는
- 성별이 남자이면서 토익 성적이 800점 이상인 경우에만 
- “항공 승무원 지원 자격 가능자입니다”를 출력하는 프로그램을 작성하시오.
-5.마트에서 구입한 물건 값과 구입 시간을 입력 받아 
-실제 지불한 금액을 출력하는 프로그램을 작성하시어. 마트는 시간대별로 할인율을 다르게 적용한다.
-[ 오전 12시 이전 : 구입 금액의 5% 할인
-오전 12시 이후(12시 포함) : 구입 금액의 2.5% 할인 ]
-{ 실행 결과 }
-구입 시간 : 10시
-총 구입 금액 : 100000
-실제 지불 금액 : 95000
-7. 첫 번째로 숫자를, 두 번째로 연산자(+, -)를, 세 번째로 숫자를 입력 받아 두 번째로 지정된 연산을 수행하고 
-그 결과가 0보다 크면 “수식의 결과는 양수입니다”, 0이면 “수식의 결과가 0ㅇㅂ니다”, 0보다 작으면 “수식의 결과가 음수입니다”를 출력하는 프로그램을 작성하시오.
-*/
+
 public class Selection2 {
     //전역변수
     public static int patience = 0;
@@ -91,10 +77,8 @@ public class Selection2 {
         while(roop_count == true);
 
         if(age < 30 && grade >= 3.5){
-            System.out.print("\033[H\033[2J");
             System.out.println("추천 대상입니다.");
         }else {
-            System.out.print("\033[H\033[2J");
             System.out.println("추천 대상이 아닙니다.");
         }
     }
@@ -249,7 +233,6 @@ public class Selection2 {
             default : 
             System.out.println("원하시는 코드가 없습니다.");
         }
-        System.out.println("정상종료되었습니다.");
     }
 
 }
