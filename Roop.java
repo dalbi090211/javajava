@@ -111,6 +111,7 @@ public class Roop {
         }
         System.out.println(factor + "의 배수의 합은 : " + temp + "입니다.");
     }
+
     public static void two() throws SyntaxException{
         int repeat_num = 0;
         int end = 0;
@@ -134,10 +135,23 @@ public class Roop {
             }
         }
     }
-    public static void three(int start, int end) throws IllegalArgumentException{
+
+    public static void three() throws SyntaxException{
         int temp = 0;
-        if(end < start){
-            throw new IllegalArgumentException(); 
+        int start = 0;
+        System.out.print("시작값(250까지) : ");
+        start = sc.nextInt();
+        if(start > 250 || start < 1){
+            throw new SyntaxException("조건에 맞는 정수를 입력해주세요.");
+        }
+        int end = 0;
+        System.out.print("종료값(300까지) : ");
+        end = sc.nextInt();
+        if(end > 300){
+            throw new SyntaxException("조건에 맞는 정수를 입력해주세요.");
+        }
+        else if(end < start){
+            throw new SyntaxException("시작값이 종료값보다 큽니다."); 
         }
         for(i = start; i < end + 1; i++){   //i를 초기값부터 종료값까지 1씩 증가시키면서 넣음
             if(i % 2 == 1){ //i가 홀수인 경우
@@ -146,7 +160,7 @@ public class Roop {
         }
         System.out.println("홀수의 합 : " + temp);
     }
-    
+    //코드들을 실행하는 함수
     public static void start_code(int code_num) throws SyntaxException{
         trial++;
         if(trial % 3 == 0){
@@ -159,10 +173,10 @@ public class Roop {
                 case 2 : 
                 two();
                 break;
-                /* 
                 case 3 : 
                 three();
                 break;
+                /* 
                 case 4 : 
                 four();
                 break;
@@ -190,8 +204,8 @@ public class Roop {
             catch(InputMismatchException e){    //X혹은 숫자가 아닌 다른 타입을 넣은 경우
                 throw new SyntaxException();
             }
-            
     }
+    //main함수
     public static void main(String args[]){
         int code_num = 0;
         try{
