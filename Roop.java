@@ -1,56 +1,97 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
+/* 
 
-import javax.security.auth.login.LoginException;
+1.	1부터 100까지의 수 중에서 4의 배수의 합을 구하여 출력하는 프로그램을 작성하시오.
+
+
+
+2.	구구단 2단을 다음과 같이 출력하는 프로그램을 반복문을 사용하여 작성하시오.
+
+{ ** 2단 **
+
+2 * 1 = 2
+
+2 * 3 = 6
+
+2 * 5 = 10
+
+2 * 7 = 14
+
+2 * 8 = 16 }
+
+
+
+3.	두 개의 숫자를 입력 받아 두 숫자 사이의 홀수 값을 모두 더하여 출력하는 프로그램을 작성하시오.
+
+
+
+
+
+4.	100부터 1까지의 수 중에서 홀수의 합을 구하여 출력하는 프로그램을 do-while문을 사용하여 작성하시오.
+
+
+
+5.	1부터 100까지의 합을 구하여 다음과 같이 출력하는 프로그램을 do-while 반복문을 이용하여 작성하시오. 10을 기준으로 합계를 출력한다.
+
+{ 1 – 10 : 0000
+
+1 – 20 : 0000
+
+1 – 30 : 0000
+
+. . . . .
+
+1 – 100 : 5050 }
+
+
+
+6.	사용자로부터 단을 입력 받아 그 단에 해당되는 구구단을 다음과 같은 형태로 출력하는 프로그램을 do-while문을 사용하여 작성하시오.
+
+{ 사용자 입력 : 12
+
+** 12단 **
+
+8 * 12 = 96
+
+6 * 12 = 72
+
+4 * 12 = 48
+
+2 * 12 = 24 }
+
+
+
+7.	사용자로부터 가장 좋아하는 월을 입력 받아 그 월에 해당되는 계절을 출력하는 프로그램을 메뉴 형태로 do-while 문을 사용하여 작성하시오.
+
+{ =======================
+
+가장 좋아하는 월은? (종료 : 0 )
+
+=======================
+
+****** 5월 ******
+
+5월은 봄에 해당됩니다 }
+*/
 
 public class Roop {
     //전역함수 선언
-    public static int patience = 0;
-    public static Boolean roop_count = false;
     public static Scanner sc  = new Scanner(System.in);
     public static int i = 0;
     public static int trial = 0;
-    //전역변수 선언
-    public static void fury() { //많은 시도시 프로그램을 종료시키는 함수
-        patience++;
-        if(patience > 2){
-            System.out.println("앞으로 " + (6 - patience) + "번 실패하면 종료합니다.");
-        }
-        if(patience == 6){
-            System.out.print("\033[H\033[2J");
-            System.out.println("시도가 너무 많습니다. 프로그램을 종료합니다.");
-            System.exit(0);
-        }
-    }
-    public static int get_int(){    //정수입력 시 예외처리를 하여 리턴하는 함수
-        int input_value = 0;
-        try{
-            input_value = sc.nextInt();
-        }
-        catch(InputMismatchException e){    //문자열, 객체와 같은 다른 타입의 값 입력 시의 에러를 캐치함
-            sc.next();  //입력버퍼를 비움
-            System.out.print("\033[H\033[2J");
-            System.out.println("정수를 입력해주세요.");
-            roop_count = true;
-        }
-        return input_value; 
-    }
-    public static float get_float(){    //실수입력 시 예외처리를 하여 리턴하는 함수
-        float input_value = 0;
-        try{
-            input_value = sc.nextFloat();
-        }
-        catch(InputMismatchException e){
-            sc.next();  
-            roop_count = true;
-            System.out.print("\033[H\033[2J");
-            System.out.println("실수를 입력해주세요.");
-        }
-        return input_value;
-    }
     //기능
-    public static void one(int max, int factor){
+    public static void one() throws SyntaxException{
+        int max = 0;
+        int factor = 0;
         int temp = 0;
+        System.out.println("배수의 합을 구할 숫자를 입력해주세요.");
+        factor = sc.nextInt();
+        if(factor < 1){
+            throw new SyntaxException("1보다 큰 숫자를 입력해주세요.");
+        }
+        System.out.println("어디까지 구할까요?");
+        max = sc.nextInt();
         for(i = 0; i < max / factor; i++){
             temp += i * factor;
         }
@@ -79,49 +120,81 @@ public class Roop {
         }
         System.out.println("홀수의 합 : " + temp);
     }
-
-
-    public static void main(String args[]) throws Exception_treat{
+    
+    public static void start_code(int code_num) throws SyntaxException{
         trial++;
-        if(trial == 10){
-            throw new ManytrialException("졸리다"); 
+        if(trial % 3 == 0){
+            System.out.print("\033[H\033[2J");
         }
-        int a, b;
-        int go_num;
-        Character roop_count;
-        try{
-            System.out.print("실행할 코드의 번호를 입력해주세요 : ");
-            go_num = sc.nextInt();
-            switch(go_num){
+            switch(code_num){ 
                 case 1 : 
-                    trial++; //사용자가 많이 시도하면 종료할수 있도록 루프마다 호출함
-                    System.out.print("수의 범위(최대값) : ");
-                    a = get_int();
-                    if(a < 1 ){   //입력받을 변수에 알맞지 않는 값이 들어오면 예외를 발생시킴
-                        throw new IllegalArgumentException();
-                    }
-                one(100, 4); 
-                break;
-                case 2 : two(9, 2);
-                break;
-                case 3 : 
-                
-                three();
+                one();
                 break;
                 /* 
-                case 7 : seven();
+                case 2 : 
+                two();
+                break;
+                case 3 : 
+                three();
+                break;
+                case 4 : 
+                four();
+                break;
+                case 5 : 
+                five();
+                break;
+                case 6 : 
+                six();
+                break;
+                case 7 : 
+                seven();
                 break;
                 */
-                default : 
-                System.out.println("원하시는 코드가 없습니다.");
+            }
+            try{
+                System.out.println("다시 시작하려면 코드번호를 아니라면 X를 입력해주세요.");
+                code_num = sc.nextInt();
+            }
+            catch(InputMismatchException e){    //X혹은 숫자가 아닌 다른 타입을 넣은 경우
+                throw new SyntaxException();
+            }
+            finally{
+                if(code_num >= 1 || code_num <= 7){ //제대로 된 정수가 들어간 경우
+                    System.out.print("\033[H\033[2J");
+                    start_code(code_num);
+                }
+                else{   //정수인데 제대로 된 값이 아닌 경우
+                    throw new SyntaxException("1~7사이의 숫자를 입력해주세요.");
+                }
+            }
+            
+        
+    }
+
+
+    public static void main(String args[]){
+        int code_num = 0;
+        try{
+            System.out.println("실행할 코드의 번호를 정수로 입력해주세요.");
+            code_num = sc.nextInt();
+            if(code_num >= 1 || code_num <= 7){
+                start_code(code_num);
+            }
+            else{
+                throw new SyntaxException("1~7사이의 숫자를 입력해주세요.");
             }
         }
-        catch(IllegalArgumentException e){
-            System.out.println("잘못된 인자입니다. 다시 시작할까요? Y/N");
-            roop_count = sc.next().charAt(0);
+        catch(SyntaxException e){
+            if(e.getMessage().length() != 0){   //오류메세지가 없을 경우 출력하지 않음
+                System.out.println(e.getMessage());  
+                System.out.println(e.getMessage().length()); 
+            }
+            System.out.println("프로그램이 종료되었습니다.");
         }
-        catch(ManytrialException e){
+        catch(InputMismatchException e){
+            System.out.println("예상되는 타입과 다른 타입을 입력하셨습니다.");  
+        }
 
-        }
+        
     }
 }
