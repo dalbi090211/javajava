@@ -1,5 +1,7 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Objects;
+
 /* 
 
 1.	1부터 100까지의 수 중에서 4의 배수의 합을 구하여 출력하는 프로그램을 작성하시오.
@@ -87,7 +89,10 @@ public class Roop {
     //전역함수 선언
     public static Scanner sc  = new Scanner(System.in);
     public static int i = 0;
+    public static int j = 0;
     public static int trial = 0;
+    
+    Cursor = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
     //기능
     public static void one() throws SyntaxException{
         int max = 0;
@@ -139,13 +144,13 @@ public class Roop {
     public static void three() throws SyntaxException{
         int temp = 0;
         int start = 0;
-        System.out.print("시작값(250까지) : ");
+        System.out.print("시작값(0~250까지) : ");
         start = sc.nextInt();
         if(start > 250 || start < 1){
             throw new SyntaxException("조건에 맞는 정수를 입력해주세요.");
         }
         int end = 0;
-        System.out.print("종료값(300까지) : ");
+        System.out.print("종료값(시작값+1~300까지) : ");
         end = sc.nextInt();
         if(end > 300){
             throw new SyntaxException("조건에 맞는 정수를 입력해주세요.");
@@ -160,6 +165,71 @@ public class Roop {
         }
         System.out.println("홀수의 합 : " + temp);
     }
+
+    public static void four(){
+        int temp = 0;
+        i = 100;
+        do{
+            temp += i;
+            i--;
+        }
+        while(i > 1);
+        System.out.println("100부터 1까지의 홀수의 합 : " + temp);
+    }
+
+    public static void five(){
+        int temp = 0;
+        i = 1;
+        System.out.println("{ ");
+        do{
+            temp += i;
+            if(temp % 10 == 0){
+                System.out.println("1 - " + i + " : " + temp);
+            }
+            i++;
+        }
+        while(i == 100);
+        System.out.println(" }");
+    }
+
+    public static void six(){
+        int factor = 0;
+        i = 10;
+        System.out.print("{ 사용자 입력 : ");
+        factor = sc.nextInt();
+        System.out.println("{ ");
+        do{
+            i -= 2;
+            System.out.println(i + " * " + factor + " = " + i*factor);
+        }
+        while(i == 2);
+        System.out.println(" }");
+    }
+
+    public static void seven(){
+        String month;
+        Boolean end_count = false;
+        System.out.println("{ =======================");
+        do{
+            System.out.println("{ =======================");
+            System.out.println("가장 좋아하는 월은? (종료 : 0 )");
+            System.out.println("{ =======================");
+            System.out.println("******  ******");
+            rs.absolute(6); 
+            month = sc.next();
+            if(!month.isEmpty()){
+                if(month == "0"){
+                    end_count = true;
+                } 
+            }
+            else{
+                throw new InputMismatchException();
+            }
+        }
+        while(end_count == false);
+        System.out.println(" }");
+    }
+
     //코드들을 실행하는 함수
     public static void start_code(int code_num) throws SyntaxException{
         trial++;
@@ -191,7 +261,7 @@ public class Roop {
                 break;
                 */
             }
-            try{
+            try{    //예외발생 시 가장 가까운 catch문으로 가기에 main의 catch가 아닌 바로 뒤에 catch로 가게됨
                 System.out.println("다시 시작하려면 코드번호를 아니라면 X를 입력해주세요.");
                 code_num = sc.nextInt();
                 if(code_num >= 1 && code_num <= 7){ //제대로 된 정수가 들어간 경우
