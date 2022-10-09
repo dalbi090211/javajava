@@ -30,6 +30,7 @@ public class Selection2 {
             roop_count = true;
         }
         return input_value; 
+        
     }
     public static float get_float(){    //실수입력 시 예외처리를 하여 리턴하는 함수
         float input_value = 0;

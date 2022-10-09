@@ -1,6 +1,4 @@
 import java.util.InputMismatchException;
-import java.util.Scanner;
-import java.util.Objects;
 
 /* 
 
@@ -87,12 +85,11 @@ class SyntaxException extends Exception {   //문법오류 시 예외를 처리�
 
 public class Roop {
     //전역함수 선언
-    public static Scanner sc  = new Scanner(System.in);
+    public static java.util.Scanner sc  = new java.util.Scanner(System.in);
     public static int i = 0;
     public static int j = 0;
     public static int trial = 0;
     
-    Cursor = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
     //기능
     public static void one() throws SyntaxException{
         int max = 0;
@@ -144,12 +141,12 @@ public class Roop {
     public static void three() throws SyntaxException{
         int temp = 0;
         int start = 0;
+        int end = 0;
         System.out.print("시작값(0~250까지) : ");
         start = sc.nextInt();
         if(start > 250 || start < 1){
             throw new SyntaxException("조건에 맞는 정수를 입력해주세요.");
         }
-        int end = 0;
         System.out.print("종료값(시작값+1~300까지) : ");
         end = sc.nextInt();
         if(end > 300){
@@ -173,7 +170,7 @@ public class Roop {
             temp += i;
             i--;
         }
-        while(i > 1);
+        while(i > 0);
         System.out.println("100부터 1까지의 홀수의 합 : " + temp);
     }
 
@@ -183,47 +180,86 @@ public class Roop {
         System.out.println("{ ");
         do{
             temp += i;
-            if(temp % 10 == 0){
+            if(i % 10 == 0){
                 System.out.println("1 - " + i + " : " + temp);
             }
             i++;
         }
-        while(i == 100);
+        while(i != 101);
         System.out.println(" }");
     }
 
     public static void six(){
         int factor = 0;
-        i = 10;
+        i = 8;
         System.out.print("{ 사용자 입력 : ");
         factor = sc.nextInt();
-        System.out.println("{ ");
+        System.out.print("** ");
+        System.out.print(factor + "단 ");
+        System.out.println("**");
         do{
-            i -= 2;
+            if(i == 2){
+                System.out.print(i + " * " + factor + " = " + i*factor);
+            }
+            else{
             System.out.println(i + " * " + factor + " = " + i*factor);
+            }
+            i -= 2;
         }
-        while(i == 2);
+        while(i != 0);
         System.out.println(" }");
     }
 
-    public static void seven(){
-        String month;
-        Boolean end_count = false;
-        System.out.println("{ =======================");
+    public static void seven() throws InterruptedException{ //4번째줄 별표 사이에 커서를 옮겨야함.
+        
+        int month = 0;
+        String temp;
+        Boolean end_count = true;
+
         do{
             System.out.println("{ =======================");
             System.out.println("가장 좋아하는 월은? (종료 : 0 )");
-            System.out.println("{ =======================");
-            System.out.println("******  ******");
-            rs.absolute(6); 
-            month = sc.next();
-            if(!month.isEmpty()){
-                if(month == "0"){
-                    end_count = true;
-                } 
+            System.out.println("=======================");
+            try{
+                temp = sc.next();
+                if(temp == "0"){
+                    System.out.println("프로그램을 종료합니다.");
+                    end_count = false;
+                }
+                else if(temp.indexOf("월", temp.length() - 1) != 0) //받은 문자열이 월로 안끝날경우
+                {
+                    throw new InputMismatchException();
+                }
+                else{
+                    month = Integer.valueOf(temp.substring(0 , temp.length() - 1));
+                    if(month > 12 || month < 1){
+                        System.out.print("\033[H\033[2J");
+                        System.out.println("1~12사이의 숫자를 넣어주세요.");  
+                        end_count = true;    
+                    }
+                    else{
+                        if(month > 11 || month < 3){
+                            System.out.println(month + "월은 봄에 해당됩니다 }");
+                        }
+                        else if(month > 2 && month < 6){
+                            System.out.println(month + "월은 여름에 해당됩니다 }");
+                        }
+                        else if(month > 5 && month < 9){
+                            System.out.println(month + "월은 가을에 해당됩니다 }");
+                        }
+                        else {
+                            System.out.println(month + "월은 겨울에 해당됩니다 }");
+                        }
+                    }
+                }
             }
-            else{
-                throw new InputMismatchException();
+            catch(NumberFormatException e){ //월앞에 숫자가 없는 경우, valueOf에서 발생
+                System.out.print("\033[H\033[2J");
+                System.out.println("월앞에 숫자를 붙여주세요.");
+            }
+            catch(InputMismatchException e){    //월로 안끝난 경우
+                System.out.print("\033[H\033[2J");
+                System.out.println("1~12 + 월의 형식으로 입력해주세요.");
             }
         }
         while(end_count == false);
@@ -246,7 +282,6 @@ public class Roop {
                 case 3 : 
                 three();
                 break;
-                /* 
                 case 4 : 
                 four();
                 break;
@@ -259,7 +294,6 @@ public class Roop {
                 case 7 : 
                 seven();
                 break;
-                */
             }
             try{    //예외발생 시 가장 가까운 catch문으로 가기에 main의 catch가 아닌 바로 뒤에 catch로 가게됨
                 System.out.println("다시 시작하려면 코드번호를 아니라면 X를 입력해주세요.");
@@ -297,7 +331,5 @@ public class Roop {
         catch(InputMismatchException e){
             System.out.println("예상되는 타입과 다른 타입을 입력하셨습니다.");  
         }
-
-        
     }
 }
