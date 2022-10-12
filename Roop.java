@@ -1,80 +1,5 @@
 import java.util.InputMismatchException;
 
-/* 
-
-1.	1부터 100까지의 수 중에서 4의 배수의 합을 구하여 출력하는 프로그램을 작성하시오.
-
-
-
-2.	구구단 2단을 다음과 같이 출력하는 프로그램을 반복문을 사용하여 작성하시오.
-
-{ ** 2단 **
-
-2 * 1 = 2
-
-2 * 3 = 6
-
-2 * 5 = 10
-
-2 * 7 = 14
-
-2 * 8 = 16 }
-
-
-
-3.	두 개의 숫자를 입력 받아 두 숫자 사이의 홀수 값을 모두 더하여 출력하는 프로그램을 작성하시오.
-
-
-
-
-
-4.	100부터 1까지의 수 중에서 홀수의 합을 구하여 출력하는 프로그램을 do-while문을 사용하여 작성하시오.
-
-
-
-5.	1부터 100까지의 합을 구하여 다음과 같이 출력하는 프로그램을 do-while 반복문을 이용하여 작성하시오. 10을 기준으로 합계를 출력한다.
-
-{ 1 – 10 : 0000
-
-1 – 20 : 0000
-
-1 – 30 : 0000
-
-. . . . .
-
-1 – 100 : 5050 }
-
-
-
-6.	사용자로부터 단을 입력 받아 그 단에 해당되는 구구단을 다음과 같은 형태로 출력하는 프로그램을 do-while문을 사용하여 작성하시오.
-
-{ 사용자 입력 : 12
-
-** 12단 **
-
-8 * 12 = 96
-
-6 * 12 = 72
-
-4 * 12 = 48
-
-2 * 12 = 24 }
-
-
-
-7.	사용자로부터 가장 좋아하는 월을 입력 받아 그 월에 해당되는 계절을 출력하는 프로그램을 메뉴 형태로 do-while 문을 사용하여 작성하시오.
-
-{ =======================
-
-가장 좋아하는 월은? (종료 : 0 )
-
-=======================
-
-****** 5월 ******
-
-5월은 봄에 해당됩니다 }
-*/
-
 class SyntaxException extends Exception {   //문법오류 시 예외를 처리하기 위한 사용자 정의 예외 클래스
     public SyntaxException(){   //오류메세지를 넣지 않는 경우
     }
@@ -210,7 +135,7 @@ public class Roop {
         System.out.println(" }");
     }
 
-    public static void seven() throws InterruptedException{ //4번째줄 별표 사이에 커서를 옮겨야함.
+    public static void seven() { //4번째줄 별표 사이에 커서를 옮겨야함.
         
         int month = 0;
         String temp;
@@ -232,6 +157,7 @@ public class Roop {
                 }
                 else{
                     month = Integer.valueOf(temp.substring(0 , temp.length() - 1));
+                    System.out.println("월 : " + month);
                     if(month > 12 || month < 1){
                         System.out.print("\033[H\033[2J");
                         System.out.println("1~12사이의 숫자를 넣어주세요.");  
@@ -254,12 +180,13 @@ public class Roop {
                 }
             }
             catch(NumberFormatException e){ //월앞에 숫자가 없는 경우, valueOf에서 발생
-                System.out.print("\033[H\033[2J");
                 System.out.println("월앞에 숫자를 붙여주세요.");
+                //시간을 지연시키는 함수
+                System.out.print("\033[H\033[2J");
             }
             catch(InputMismatchException e){    //월로 안끝난 경우
-                System.out.print("\033[H\033[2J");
                 System.out.println("1~12 + 월의 형식으로 입력해주세요.");
+                System.out.print("\033[H\033[2J");
             }
         }
         while(end_count == false);
